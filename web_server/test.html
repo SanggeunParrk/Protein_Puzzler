@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sang-geun Park</title>
+    <link rel="stylesheet" href="link_styles.css">
+	<link rel="stylesheet" href="css/LiteMol-plugin.css" type="text/css" />
+	<script src="js/LiteMol-plugin.js"></script>
+</head>
+<body style="background-color: darkblue; color : white;">
+	<div>
+		<h1>Sang-geun Park</h1>
+		<img src="Cha.png" alt="My Photo" width="150" height="150">
+		<p>Here is a link to my <a href="https://www.notion.so/4777991632634d07860f4b17c4ab7586?v=0589fbe4decf4ad98e39ef176ed2a787" target="_blank">notion page</a>.</p>
+	</div>
+    <div>
+        <h2>My Background</h2>
+        <p>Hello, my name is Sang-geun Park and I am currently a senior student majoring in Biology, physics, and statistics at Seoul National University. I plan to enter Professor Baek's lab to conduct research in computational biology using AI, which is a field that I am deeply passionate about. While I have a strong foundation in biology, I believe my strengths in physics and statistics will enable me to bring a unique perspective to the field. I am excited to explore this area further and contribute to cutting-edge research in the lab</p>
+    </div>
+	<div>
+		<h2>My Interests</h2>
+		<ul>
+			<li>Computational Sturctural Biology</li>
+			<li>Diffusion Model</li>
+			<li>Reinforcement Learning</li>
+			<li>Contrastive Learning</li>
+		</ul>
+	</div>
+
+	<div id="litemol" style="width: 640px; height: 480px; margin-top: 200px; position: relative"></div>
+	<script>
+		var plugin = LiteMol.Plugin.create({ target: '#litemol' });
+	</script>
+	<script>
+		plugin.loadMolecule({
+			id: '1tqn',
+			url: 'https://www.ebi.ac.uk/pdbe/static/entry/1tqn_updated.cif',
+			format: 'cif'
+		});
+	</script>
+
+</body>
+</html>
