@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiteMol Viewer</title>
+    <script src="dist/LiteMol.js"></script>
+    <style>
+        #litemol { width: 100%; height: 600px; }
+    </style>
+</head>
+<body>
+    <div id="litemol"></div>
+    <input type="file" id="pdb-file" accept=".pdb" />
+    <script>
+        const viewer = LiteMol.Plugin.create({
+            target: "#litemol",
+            viewportBackground: "#fff",
+            layoutState: {
+                hideControls: true
+            }
+        });
+
+        document.getElementById("pdb-file").addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const pdbData = e.target.result;
+                    viewer.loadPdb(pdbData);
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        LiteMol.Plugin.extend(viewer, {
+            loadPdb: function (pdbData) {
+                const model = LiteMol.Bootstrap.Utils.createDefaultTargetModel();
+                const parse = LiteMol.Bootstrap.Utils.parsePdb(model, pdbData);
+                const theme = LiteMol.Bootstrap.Visualization.Molecule.Default.ElementSymbolTheme.create();
+                const action = LiteMol.Bootstrap.Tree.Transform.build()
+                    .add(model, LiteMol.Bootstrap.Entity.Transformer.Molecule.CreateFromModel, { model }, { isBinding: true })
+                    .add(model, LiteMol.Bootstrap.Entity.Transformer.Molecule.CreateVisual, { theme });
+
+                viewer.applyTransform(action);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -72,13 +72,10 @@
         <script>
                 var plugin = LiteMol.Plugin.create({ target: '#litemol' });
         </script>
-        <script>
-                plugin.loadMolecule({
-                        id: '1tqn',
-                        url: 'https://www.ebi.ac.uk/pdbe/static/entry/1tqn_updated.cif',
-                        format: 'cif'
-                });
-        </script>
+
+        <div class="view3d">
+          <pdb-lite-mol hide-controls="true"></pdb-lite-mol>
+        </div>
 
   </main>
 
