@@ -4,18 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenAI-like Website</title>
-  <script src="ngl/dist/ngl.js"></script>
+          <link rel="stylesheet" href="css/LiteMol-plugin.css" type="text/css" />
+        <script src="js/LiteMol-plugin.js"></script>
 
-  <style>
-      .ngl-container {
-      height: 300px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 80%;
-      margin: 0 auto; /* 가운데 정렬 */
-    }
-  </style>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -77,30 +68,28 @@
 
   <main class="main-content">
     <p>Our Project Page</p>
-    <div id="viewport" class="ngl-container"></div>
+            <div id="litemol" style="width: 640px; height: 480px; margin-top: 200px; position: relative"></div>
+        <script>
+                var plugin = LiteMol.Plugin.create({ target: '#litemol' });
+        </script>
+        <script>
+                plugin.loadMolecule({
+                        id: '1tqn',
+                        url: '/Users/psk6950/Protein_Puzzler/1tqn.cif',
+                        format: 'cif'
+                });
+        </script>
+
+      <!-- <div class="view3d">
+        <pdb-lite-mol pdb-id="''" source-url="web_server/7zgj.pdb" source-format="pdb" hide-controls="true"></pdb-lite-mol>
+      </div> -->
+
   </main>
-
-
 
   <footer class="footer">
     <p>Copyright &copy; 2023 SNU CSSB</p>
   </footer>
 
 </body>
-
-
-<script>
-  var stage = new NGL.Stage("viewport");
-  stage.setParameters({ backgroundColor: "white" });
-  stage.loadFile("7zgj.pdb").then(function (component) {
-    component.addRepresentation("cartoon");
-    stage.autoView();
-  });
-
-  stage.loadFile("1a2w.pdb").then(function (component) {
-            component.addRepresentation("cartoon");
-            component.autoView();
-        });
-</script>
 </html>
 

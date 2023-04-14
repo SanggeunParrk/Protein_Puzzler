@@ -75784,11 +75784,12 @@ var LiteMol;
                         to: [Entity.Molecule.Molecule],
                         defaultParams: function (ctx) { return ({ format: LiteMol.Core.Formats.Molecule.SupportedFormats.mmCIF }); }
                     }, function (ctx, a, t) {
-                        return Bootstrap.Task.create("Create Molecule (" + a.props.label + ")", 'Silent', function () { return __awaiter(_this, void 0, void 0, function () {
+                        return Bootstrap.Task.create("Create Molecule_Test (" + a.props.label + ")", 'Silent', function () { return __awaiter(_this, void 0, void 0, function () {
                             var r, _i, _a, w;
+                            console.log('myFunction이 호출되었습니다.');
                             return __generator(this, function (_b) {
                                 switch (_b.label) {
-                                    case 0: return [4 /*yield*/, Bootstrap.Task.fromComputation("Create Molecule (" + a.props.label + ")", 'Normal', t.params.format.parse(a.props.data, { id: t.params.customId }))
+                                    case 0: return [4 /*yield*/, Bootstrap.Task.fromComputation("Create Molecule_Test (" + a.props.label + ")", 'Normal', t.params.format.parse(a.props.data, { id: t.params.customId }))
                                             .setReportTime(true).run(ctx)];
                                     case 1:
                                         r = _b.sent();
@@ -75813,7 +75814,7 @@ var LiteMol;
                         to: [Entity.Molecule.Molecule],
                         defaultParams: function (ctx) { return ({ blockIndex: 0 }); }
                     }, function (ctx, a, t) {
-                        return Bootstrap.Task.create("Create Molecule (" + a.props.label + ")", 'Normal', function (ctx) { return __awaiter(_this, void 0, void 0, function () {
+                        return Bootstrap.Task.create("Create Molecule_Test (" + a.props.label + ")", 'Normal', function (ctx) { return __awaiter(_this, void 0, void 0, function () {
                             var index, b, molecule;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
@@ -81689,6 +81690,8 @@ var LiteMol;
              * Default format is mmCIF.
              */
             Controller.prototype.loadMolecule = function (source) {
+
+                console.log('myFunction이 호출되었습니다.');
                 var action = this.createTransform();
                 if (!source.url && !source.data) {
                     throw new Error('Please specify either url or data');

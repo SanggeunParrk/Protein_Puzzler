@@ -72910,6 +72910,9 @@ var LiteMol;
                 Running.prototype.rejected = function (err) {
                     this.context.performance.end('task' + this.info.id);
                     this.context.performance.formatTime('task' + this.info.id);
+                    console.log("Error");
+                    console.log(err);
+                    console.log(this.info);
                     if (Task.__DEBUG_MODE__) {
                         console.error(err);
                     }
@@ -75784,11 +75787,13 @@ var LiteMol;
                         to: [Entity.Molecule.Molecule],
                         defaultParams: function (ctx) { return ({ format: LiteMol.Core.Formats.Molecule.SupportedFormats.mmCIF }); }
                     }, function (ctx, a, t) {
-                        return Bootstrap.Task.create("Create Molecule (" + a.props.label + ")", 'Silent', function () { return __awaiter(_this, void 0, void 0, function () {
+                        return Bootstrap.Task.create("Create Moleculeee (" + a.props.label + ")", 'Silent', function () { return __awaiter(_this, void 0, void 0, function () {
                             var r, _i, _a, w;
+
+                            console.log('CreateFromData이 호출되었습니다.');
                             return __generator(this, function (_b) {
                                 switch (_b.label) {
-                                    case 0: return [4 /*yield*/, Bootstrap.Task.fromComputation("Create Molecule (" + a.props.label + ")", 'Normal', t.params.format.parse(a.props.data, { id: t.params.customId }))
+                                    case 0: return [4 /*yield*/, Bootstrap.Task.fromComputation("Create Moleculeee (" + a.props.label + ")", 'Normal', t.params.format.parse(a.props.data, { id: t.params.customId }))
                                             .setReportTime(true).run(ctx)];
                                     case 1:
                                         r = _b.sent();
@@ -75846,6 +75851,9 @@ var LiteMol;
                                 params = t.params;
                                 index = params.modelIndex | 0;
                                 model = a.props.molecule.models[index];
+                                console.log(a);
+                                console.log(a.props);
+                                console.log(a.props.molecule);
                                 if (!model) {
                                     throw "The molecule contains only " + a.props.molecule.models.length + " model(s), tried to access the " + (index + 1) + "-th.";
                                 }
@@ -76326,6 +76334,7 @@ var LiteMol;
                         defaultParams: function () { return void 0; }
                     }, function (ctx, a, t) {
                         var data = t.params.data;
+                        console.log('myFunction이 호출되었습니다.');
                         var e = data instanceof ArrayBuffer
                             ? Entity.Data.Binary.create(t, { label: t.params.id ? t.params.id : "Binary Data", description: t.params.description, data: data })
                             : Entity.Data.String.create(t, { label: t.params.id ? t.params.id : "String Data", description: t.params.description, data: data });
@@ -81690,6 +81699,7 @@ var LiteMol;
              */
             Controller.prototype.loadMolecule = function (source) {
                 var action = this.createTransform();
+                console.log('loadMolecule이 호출되었습니다.');
                 if (!source.url && !source.data) {
                     throw new Error('Please specify either url or data');
                 }

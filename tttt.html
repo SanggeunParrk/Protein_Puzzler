@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>NGL Viewer Example</title>
+    <script src="web_server/ngl/dist/ngl.js"></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="viewport" style="width:100%; height:100%;"></div>
+    <script>
+        // NGL 뷰어 초기화
+        var stage = new NGL.Stage("viewport");
+        stage.setParameters({ backgroundColor: "white" });
+
+        // PDB 파일 로드 및 표시
+        stage.setParameters({ backgroundColor: "black" });
+        stage.loadFile("web_server/7zgj.pdb").then(function (component) {
+            component.addRepresentation("cartoon");
+            component.autoView();
+        });
+    </script>
+</body>
+</html>
